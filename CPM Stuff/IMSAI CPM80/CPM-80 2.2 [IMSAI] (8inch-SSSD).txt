@@ -1,0 +1,8 @@
+CP/M-80 2.2 [IMSIA 56K] (8/24/80) with CCP Patch 8/24/80
+Released by IMSIA/Digital Research in 1980
+For IMSIA computers.
+
+This 56K CP/M Version 2.2 with CCP Patch 8/24/80 for IMSIA computers.
+
+Contains one Single-Sided Single Density 8-inch disk image in 
+ImageDisk format.

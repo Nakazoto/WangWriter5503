@@ -1,0 +1,4 @@
+KAYPRO II 64k CP/M vers 2.2
+Released in 1983 by Kaypro
+
+Use ImageDisk 1.18 to write this disk image to a 5.25" floppy.
