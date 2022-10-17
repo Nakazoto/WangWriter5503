@@ -13,19 +13,19 @@
 0225:		50 72 6F 63 65 64 75 72 65 31 00 	; "Procedure"
 
 
-0230:		02			ld (bc),a				; Store A into memory pointed at by bc
-0231:		31 00 02	ld sp,0x0200			; Load 0x0200 into sp
+0230:		02			ld (bc),a				; Store A into memory pointed at by bc (Not used since 0x0200 jumps over it?)
+0231:		31 00 02	ld sp,0x0200			; Load 0x0200 into sp (Sets up the stack)
 0234:		cd 56 02	call 0x0256				; Jump to video control/setup subroutine (0x0256)
-0237:		01 03 02	ld bc,0x0203			; Load 0x0203 into bc
+0237:		01 03 02	ld bc,0x0203			; Load 0x0203 into bc (Load first character of ASCII into bc)
 023a:		c5			push bc					; Push b and c onto stack
-023b:		11 00 f6	ld de,0xf600			; Load 0xf600 into de
-023e:		01 11 00	ld bc,0x0011			; Load 0x0011 into bc
-0241:		cd 7d 02	call 0x027d				; Jump to unknown subroutine (0x027d)
+023b:		11 00 f6	ld de,0xf600			; Load 0xf600 into de (Loads the address of bottom row of CRT into de)
+023e:		01 11 00	ld bc,0x0011			; Load 0x0011 into bc (Loads the length of the string into bc)
+0241:		cd 7d 02	call 0x027d				; Jump to Write string subroutine (0x027d)
 0244:		01 14 02	ld bc,0x0214			; Load 0x0214 into bc
 0247:		c5			push bc					; Push b and c onto stack	
 0248:		11 00 f7	ld de,0xf700			; Load 0xf700 into de
 024b:		01 1a 00	ld bc,0x001a			; Load 0x001a into bc
-024e:		cd 7d 02	call 0x027d				; Jump to unknown subroutine (0x027d)
+024e:		cd 7d 02	call 0x027d				; Jump to Write string subroutine (0x027d)
 0251:		c3 51 02	jp 0x0251				; If zero flag is not set, jump to 0x0251 (I don't understand this one)
 0254:		fb			ei						; Sets both interrupt flip-flops (allow maskable interrupts)
 0255:		76			halt
@@ -53,12 +53,12 @@
 027a:		d3 46		out (0x46),a			; Load last displayed data row (0x17)
 027c:		c9			ret	 					; Return from subroutine (stack popped into PC)
 
-; Unknown subroutine
-027d:		e1			pop hl					; Pop stack into hl
-027e:		e3			ex (sp),hl				; Exchanges (SP) with L, and (SP+1) with H
+; Write string subroutine
+027d:		e1			pop hl					; Pop stack into hl (Copy return address into HL)
+027e:		e3			ex (sp),hl				; Exchanges (SP) with L, and (SP+1) with H (Put return address into SP and SP into HL)
 027f:		78			ld a,b					; Load b into a (b should have 00 in it at this time)
 0280:		b1			or c					; OR a with c (c should have 11 or 1a in it at this time)
-0281:		28 02		jr z,0x0055				; If zero flag is set, d is added to pc
-0283:		ed b0		ldir					; Transfers byte at location pointed by HL to location pointed by DE. HL, DE incremented, BC decremented, repeat if BC not zero
+0281:		28 02		jr z,0x0285				; If zero flag is set, d is added to pc (Jumps two bytes ahead to 0x0285)
+0283:		ed b0		ldir					; Transfers byte at location pointed by HL to location pointed by DE. HL, DE incremented, BC decremented, repeat if BC not zero. (This is the write string command)
 0285:		c9			ret						; Top of stack popped into pc
 
