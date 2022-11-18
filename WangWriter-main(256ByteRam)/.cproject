@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1038514381">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1038514381" moduleId="org.eclipse.cdt.core.settings" name="Windows">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1038514381" name="Windows" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1038514381." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.base.679917335" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF;org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.mingw.base.134465247" name="Debug Platform" osList="win32" superClass="cdt.managedbuild.target.gnu.platform.mingw.base"/>
+							<builder buildPath="${workspace_loc:/WangWriter}/Default" id="cdt.managedbuild.tool.gnu.builder.mingw.base.378777070" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="CDT Internal Builder" superClass="cdt.managedbuild.tool.gnu.builder.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.base.804596669" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.base">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1566402956" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.mingw.base.668300541" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base.1749639271" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.810239649" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\SDL2-2.24.1\x86_64-w64-mingw32\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/filedialog/include}&quot;"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.other.other.1536215386" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -fmessage-length=0" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.903296900" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.430524647" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1851782347" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\SDL2-2.24.1\x86_64-w64-mingw32\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/filedialog/include}&quot;"/>
+								</option>
+								<option id="gnu.c.compiler.option.dialect.std.1302504501" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.misc.other.150175841" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1825432417" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.base.461134399" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base.1509049939" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.libs.255639432" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" value="SDL2"/>
+									<listOptionValue builtIn="false" value="uuid"/>
+									<listOptionValue builtIn="false" value="comctl32"/>
+									<listOptionValue builtIn="false" value="ole32"/>
+									<listOptionValue builtIn="false" value="oleaut32"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.paths.600906750" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;C:\SDL2-2.24.1\x86_64-w64-mingw32\lib&quot;"/>
+								</option>
+								<option id="gnu.cpp.link.option.flags.428869878" name="Linker flags" superClass="gnu.cpp.link.option.flags" useByScannerDiscovery="false" value="-mwindows" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1023686049" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="CPM/cpm22.asm|CPM/cbios.asm|CPM/bootsector.asm|CPM/blank.asm|filedialog/nfd_zenity.c|filedialog/nfd_gtk.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="packages"/>
+		</cconfiguration>
+		<cconfiguration id="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1340610411">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1340610411" moduleId="org.eclipse.cdt.core.settings" name="Linux">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1340610411" name="Linux" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1340610411." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.668372753" name="Linux GCC" nonInternalBuilderId="cdt.managedbuild.target.gnu.builder.base" superClass="cdt.managedbuild.toolchain.gnu.base">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF;org.eclipse.cdt.core.ELF" id="cdt.managedbuild.target.gnu.platform.base.1578698839" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/WangWriter}/Linux" cleanBuildTarget="clean" id="org.eclipse.cdt.build.core.internal.builder.1055702747" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.build.core.internal.builder"/>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.929935164" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1643188991" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.130533105" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/filedialog/include}&quot;"/>
+									<listOptionValue builtIn="false" value="/usr/include/atk-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/glib-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+									<listOptionValue builtIn="false" value="/usr/include/gtk-3.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/at-spi2-atk/2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/at-spi-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/dbus-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/lib/x86_64-linux-gnu/dbus-1.0/include"/>
+									<listOptionValue builtIn="false" value="/usr/include/gio-unix-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/cairo"/>
+									<listOptionValue builtIn="false" value="/usr/include/pango-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/harfbuzz"/>
+									<listOptionValue builtIn="false" value="/usr/include/fribidi"/>
+									<listOptionValue builtIn="false" value="/usr/include/pixman-1"/>
+									<listOptionValue builtIn="false" value="/usr/include/uuid"/>
+									<listOptionValue builtIn="false" value="/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="/usr/include/gdk-pixbuf-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/libpng16"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/include/libmount"/>
+									<listOptionValue builtIn="false" value="/usr/include/blkid"/>
+									<listOptionValue builtIn="false" value="/usr/include/SDL2"/>
+									<listOptionValue builtIn="false" value="&quot;C:\SDL2-2.24.1\x86_64-w64-mingw32\include&quot;"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.other.other.1818955335" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="`sdl2-config --cflags` -c -fmessage-length=0" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1833763701" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.834510830" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1168773176" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/filedialog/include}&quot;"/>
+									<listOptionValue builtIn="false" value="/usr/include/atk-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/glib-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+									<listOptionValue builtIn="false" value="/usr/include/gtk-3.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/at-spi2-atk/2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/at-spi-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/dbus-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/lib/x86_64-linux-gnu/dbus-1.0/include"/>
+									<listOptionValue builtIn="false" value="/usr/include/gio-unix-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/cairo"/>
+									<listOptionValue builtIn="false" value="/usr/include/pango-1.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/harfbuzz"/>
+									<listOptionValue builtIn="false" value="/usr/include/fribidi"/>
+									<listOptionValue builtIn="false" value="/usr/include/pixman-1"/>
+									<listOptionValue builtIn="false" value="/usr/include/uuid"/>
+									<listOptionValue builtIn="false" value="/usr/include/freetype2"/>
+									<listOptionValue builtIn="false" value="/usr/include/gdk-pixbuf-2.0"/>
+									<listOptionValue builtIn="false" value="/usr/include/libpng16"/>
+									<listOptionValue builtIn="false" value="/usr/include/x86_64-linux-gnu"/>
+									<listOptionValue builtIn="false" value="/usr/include/libmount"/>
+									<listOptionValue builtIn="false" value="/usr/include/blkid"/>
+									<listOptionValue builtIn="false" value="/usr/include/SDL2"/>
+								</option>
+								<option id="gnu.c.compiler.option.misc.other.1400669189" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.875347932" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.1224392709" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.570019640" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.libs.92572726" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="atk-1.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gobject-2.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="glib-2.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gtk-3"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gdk-3"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="pangocairo-1.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="pango-1.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="harfbuzz"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="cairo-gobject"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="cairo"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gdk_pixbuf-2.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gio-2.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="SDL2"/>
+									<listOptionValue builtIn="false" value="atk-1.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gobject-2.0"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="glib-2.0"/>
+									<listOptionValue builtIn="false" value="gtk-3"/>
+									<listOptionValue builtIn="false" value="gdk-3"/>
+									<listOptionValue builtIn="false" value="pangocairo-1.0"/>
+									<listOptionValue builtIn="false" value="pango-1.0"/>
+									<listOptionValue builtIn="false" value="harfbuzz"/>
+									<listOptionValue builtIn="false" value="cairo-gobject"/>
+									<listOptionValue builtIn="false" value="cairo"/>
+									<listOptionValue builtIn="false" value="gdk_pixbuf-2.0"/>
+									<listOptionValue builtIn="false" value="gio-2.0"/>
+									<listOptionValue builtIn="false" value="SDL2"/>
+								</option>
+								<option id="gnu.cpp.link.option.flags.996096184" name="Linker flags" superClass="gnu.cpp.link.option.flags" useByScannerDiscovery="false" value="" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1711189889" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.base.1226937293" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1327966117" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="CPM/cpm22.asm|CPM/cbios.asm|CPM/bootsector.asm|CPM/blank.asm|filedialog/nfd_zenity.c|filedialog/nfd_win.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="org.eclipse.cdt.managedbuilder.pkgconfig.extSettings" factoryId="org.eclipse.cdt.core.extension.container.factory">
+					<externalSetting contentTypes="org.eclipse.cdt.managedbuilder.core.compiledObjectFile">
+						<entry flags="UNDEFINED" kind="libraryFile" name="atk-1.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gobject-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="glib-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gtk-3" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gdk-3" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="pangocairo-1.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="pango-1.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="harfbuzz" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="cairo-gobject" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="cairo" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gdk_pixbuf-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="gio-2.0" srcPrefixMapping="" srcRootPath=""/>
+						<entry flags="UNDEFINED" kind="libraryFile" name="SDL2" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+					<externalSetting contentTypes="org.eclipse.cdt.core.cSource:org.eclipse.cdt.core.cxxSource">
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/${ProjName}/filedialog/include"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/atk-1.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/glib-2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/lib/x86_64-linux-gnu/glib-2.0/include"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/gtk-3.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/at-spi2-atk/2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/at-spi-2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/dbus-1.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/lib/x86_64-linux-gnu/dbus-1.0/include"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/gio-unix-2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/cairo"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/pango-1.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/harfbuzz"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/fribidi"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/pixman-1"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/uuid"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/freetype2"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/gdk-pixbuf-2.0"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/libpng16"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/x86_64-linux-gnu"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/libmount"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/blkid"/>
+						<entry flags="BUILTIN" kind="includePath" name="/usr/include/SDL2"/>
+					</externalSetting>
+				</externalSettings>
+			</storageModule>
+			<storageModule IlmBase="false" Lerc="false" OpenCL="false" OpenEXR="false" Qt5Concurrent="false" Qt5Core="false" Qt5DBus="false" Qt5Gui="false" Qt5Location="false" Qt5Network="false" Qt5OpenGL="false" Qt5OpenGLExtensions="false" Qt5Positioning="false" Qt5PositioningQuick="false" Qt5PrintSupport="false" Qt5Qml="false" Qt5QmlModels="false" Qt5QmlWorkerScript="false" Qt5Quick="false" Qt5QuickTest="false" Qt5QuickWidgets="false" Qt5Sql="false" Qt5Test="false" Qt5Widgets="false" Qt5Xml="false" SDL2_gfx="false" SDL2_image="false" SDL2_mixer="false" SDL2_net="false" SDL2_ttf="false" SDL_image="false" adwaita-icon-theme="false" alsa="false" applewmproto="false" atk="true" atk-bridge-2.0="false" atspi-2="false" bash-completion="false" bigreqsproto="false" blas="false" blas64="false" blkid="false" caca="false" cacaplusplus="false" caf-openmpi="false" cairo="false" cairo-fc="false" cairo-ft="false" cairo-gobject="false" cairo-pdf="false" cairo-png="false" cairo-ps="false" cairo-script="false" cairo-svg="false" cairo-tee="false" cairo-xcb="false" cairo-xcb-shm="false" cairo-xlib="false" cairo-xlib-xrender="false" compositeproto="false" cuda="false" damageproto="false" datrie-0.2="false" dbus-1="false" dmxproto="false" dpmsproto="false" dri2proto="false" dri3proto="false" egl="false" epoxy="false" expat="false" ffnvcodec="false" fixesproto="false" flac="false" fluidsynth="false" fontconfig="false" fontsproto="false" fontutil="false" form="false" formw="false" freetype2="false" fribidi="false" gbm="false" gdk-2.0="false" gdk-3.0="false" gdk-broadway-3.0="false" gdk-pixbuf-2.0="false" gdk-wayland-3.0="false" gdk-x11-2.0="false" gdk-x11-3.0="false" geoclue-2.0="false" gflags="false" gio-2.0="false" gio-unix-2.0="false" gl="false" glesv1_cm="false" glesv2="false" glib-2.0="false" glproto="false" glu="false" glx="false" gmodule-2.0="false" gmodule-export-2.0="false" gmodule-no-export-2.0="false" gmp="false" gmpxx="false" gnome-icon-theme="false" gobject-2.0="true" graphite2="false" gthread-2.0="false" gtk-engines-2="false" gtkplus-2.0="false" gtkplus-3.0="true" gtkplus-broadway-3.0="false" gtkplus-unix-print-2.0="false" gtkplus-unix-print-3.0="false" gtkplus-wayland-3.0="false" gtkplus-x11-2.0="false" gtkplus-x11-3.0="false" harfbuzz="false" harfbuzz-gobject="false" harfbuzz-icu="false" hdf5="false" hdf5-serial="false" hwloc="false" ibus-1.0="false" ice="false" icu-i18n="false" icu-io="false" icu-uc="false" inputproto="false" iso-codes="false" jack="false" julius-4="false" kbproto="false" lapack="false" lapack64="false" libavcodec="false" libavdevice="false" libavfilter="false" libavformat="false" libavutil="false" libbrotlicommon="false" libbrotlidec="false" libbrotlienc="false" libcrypt="false" libcrypto="false" libcurl="false" libdc1394-2="false" libdecor-0="false" libdeflate="false" libdrm="false" libdrm_amdgpu="false" libdrm_intel="false" libdrm_nouveau="false" libdrm_radeon="false" libdvdcss="false" libefa="false" libevent="false" libevent_core="false" libevent_extra="false" libevent_openssl="false" libevent_pthreads="false" libexif="false" libexslt="false" libffi="false" libfl="false" libglog="false" libglvnd="false" libgphoto2="false" libgphoto2_port="false" libibverbs="false" libinstpatch-1.0="false" libjpeg="false" liblzma="false" libmlx4="false" libmlx5="false" libmodbus="false" libmodplug="false" libmpg123="false" libnl-3.0="false" libnl-route-3.0="false" libnsl="false" libout123="false" libpcre2-16="false" libpcre2-32="false" libpcre2-8="false" libpcre2-posix="false" libpng="false" libpng16="false" libpulse="false" libpulse-mainloop-glib="false" libpulse-simple="false" libraw1394="false" libselinux="false" libsepol="false" libssl="false" libswresample="false" libswscale="false" libsyn123="false" libsystemd="false" libthai="false" libtiff-4="false" libtirpc="false" libudev="false" libunwind="false" libunwind-coredump="false" libunwind-generic="false" libunwind-ptrace="false" libusb="false" libwebp="false" libwebpdemux="false" libwebpmux="false" libxcrypt="false" libxml-2.0="false" libxslt="false" lmdb="false" mate-default-applications="false" mate-keybindings="false" mate-screensaver="false" menu="false" menuw="false" mobile-broadband-provider-info="false" moduleId="packages" mount="false" mpfr="false" mpi="false" mpi-c="false" mpi-cxx="false" mpi-fort="false" mt32emu="false" ncurses="false" ncursesplusplus="false" ncursesplusplusw="false" ncursesw="false" numa="false" ogg="false" ompi="false" ompi-c="false" ompi-cxx="false" ompi-fort="false" openblas="false" openblas64="false" opencv4="false" opengl="false" openssl="false" opus="false" opusfile="false" opusurl="false" orte="false" panel="false" panelw="false" pango="false" pangocairo="false" pangofc="false" pangoft2="false" pangoot="false" pangoxft="false" pciaccess="false" pixman-1="false" pmix="false" poppler-data="false" presentproto="false" protobuf="false" protobuf-lite="false" pthread-stubs="false" python-2.7="false" python-3.10="false" python-3.10-embed="false" python2="false" python3="false" python3-embed="false" randrproto="false" readline="false" recordproto="false" renderproto="false" resourceproto="false" samplerate="false" scrnsaverproto="false" sdl="false" sdl2="true" sent-4="false" shared-mime-info="false" slang="false" sm="false" snappy="false" sndfile="false" sndio="false" systemd="false" tbb="false" tic="false" tinfo="false" udev="false" uuid="false" vamp="false" vamp-hostsdk="false" vamp-sdk="false" vdpau="false" videoproto="false" vorbis="false" vorbisenc="false" vorbisfile="false" vulkan="false" wayland-client="false" wayland-cursor="false" wayland-egl="false" wayland-protocols="false" wayland-scanner="false" wayland-server="false" x11="false" xau="false" xbitmaps="false" xcb="false" xcb-render="false" xcb-shm="false" xcmiscproto="false" xcomposite="false" xcursor="false" xdamage="false" xdmcp="false" xext="false" xextproto="false" xf86bigfontproto="false" xf86dgaproto="false" xf86driproto="false" xf86vidmodeproto="false" xfixes="false" xft="false" xi="false" xinerama="false" xineramaproto="false" xkbcommon="false" xkbcomp="false" xkeyboard-config="false" xmu="false" xorg-sgml-doctools="false" xorg-wacom="false" xproto="false" xrandr="false" xrender="false" xscrnsaver="false" xsimd="false" xt="false" xtrans="false" xtst="false" xv="false" xxf86vm="false" yelp-xsl="false" z3="false" zlib="false"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="WangWriter.null.122338822" name="WangWriter"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Linux">
+			<resource resourceType="PROJECT" workspacePath="/WangWriter"/>
+		</configuration>
+		<configuration configurationName="Windows">
+			<resource resourceType="PROJECT" workspacePath="/WangWriter"/>
+		</configuration>
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/WangWriter"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.pathentry">
+		<pathentry kind="src" path=""/>
+		<pathentry kind="out" path="build"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1340610411;cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1340610411.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1643188991;cdt.managedbuild.tool.gnu.cpp.compiler.input.1833763701">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1340610411;cdt.managedbuild.toolchain.gnu.mingw.base.1139266341.1340610411.;cdt.managedbuild.tool.gnu.c.compiler.base.834510830;cdt.managedbuild.tool.gnu.c.compiler.input.875347932">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

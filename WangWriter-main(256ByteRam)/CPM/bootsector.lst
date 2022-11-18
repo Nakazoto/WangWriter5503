@@ -1,0 +1,78 @@
+   1:				
+   2:     -	0003          	UBS	equ	0x03	; Upper Bank Select
+   3:     -	005F          	DISPLAY	equ	0x5F
+   4:				
+   5:     -	0030          	PORTA	equ	0x30
+   6:     -	0031          	PORTB	equ	0x31
+   7:     -	0032          	CMDA	equ	0x32
+   8:     -	0033          	CMDB	equ	0x33
+   9:				
+  10:     -	0200          		org	0x0200
+  11:    0+4	0200  F3      	entry:	di
+  12:    4+10	0201  310002  		ld	sp, 0x200
+  13:   14+7	0204  3EFF    		ld	a, 0xFF
+  14:   21+11	0206  D35F    		out	(DISPLAY), a
+  15:   32+7	0208  3E80    		ld	a,0x80
+  16:   39+11	020A  D303    		out	(UBS),a			; Change upper bank to CRT Select (0x80 = D7 = 1 = CRT Select)
+  17:   50+11	020C  D34E    		out	(0x4e),a			; Start timing chain
+  18:   61+11	020E  D34A    		out	(0x4a),a			; VTAC reset
+  19:   72+11	0210  D34E    		out	(0x4e),a			; Start timing chain
+  20:   83+7	0212  3E63    		ld	a,0x63
+  21:   90+11	0214  D340    		out	(0x40),a			; Load horizontal line count (0x63)
+  22:  101+7	0216  3E26    		ld	a,0x26
+  23:  108+11	0218  D341    		out	(0x41),a			; Load sync width, delay, interface (0x26)
+  24:  119+7	021A  3E55    		ld	a,0x55
+  25:  126+11	021C  D342    		out	(0x42),a			; Load scans/data row, char/data row (0x55)
+  26:  137+7	021E  3ED7    		ld	a,0xd7
+  27:  144+11	0220  D343    		out	(0x43),a			; Load skew bits, data rows/frame (0xd7)
+  28:  155+7	0222  3E14    		ld	a,0x14
+  29:  162+11	0224  D344    		out	(0x44),a			; Load scan lines/fram (0x14)
+  30:  173+7	0226  3E1F    		ld	a,0x1f
+  31:  180+11	0228  D345    		out	(0x45),a			; Load vertical data start (0x1f)
+  32:  191+7	022A  3E17    		ld	a,0x17
+  33:  198+11	022C  D346    		out	(0x46),a
+  34:					
+  35:  209+10	022E  214402  		ld	hl, cpm
+  36:  219+7	0231  1E00    		ld	e, 0
+  37:  226+13	0233  3A4602  		ld	a, (cpm+2)	; Page vector for CP/M image
+  38:  239+7	0236  D603    		sui	3
+  39:  246+4	0238  57      		mov	d, a
+  40:  250+10	0239  01001C  		ld	bc, 7168	; Size
+  41:  260+16+5	023C  EDB0    		ldir
+  42:					
+  43:  276+7	023E  2E00    		ld	l, 0
+  44:  283+7	0240  C616    		add	a, 0x16		; Offset of 0x1600
+  45:  290+4	0242  67      		ld	h, a
+  46:  294+4	0243  E9      		jp	(hl)
+  47:					
+  48:					rept	(0x200 - $)
+  51:					
+  52:     -	0244          	cpm	equ	$
+  53:				
+  54:				
+
+
+
+Statistics:
+
+     4	passes
+     0	jr promotions
+     8	symbols
+    68	bytes
+
+     0	macro calls
+    13	macro bytes
+     0	invented symbols
+
+
+
+Symbol Table:
+
+CMDA           =32        50
+CMDB           =33        51
+DISPLAY        =5F        95
+PORTA          =30        48
+PORTB          =31        49
+UBS            =03        3
+cpm            = 244      580
+entry            200      512

@@ -1,0 +1,279 @@
+   1:				
+   2:     -	0003          	UBS	equ	0x03	; Upper Bank Select
+   3:     -	005F          	DISPLAY	equ	0x5F
+   4:				
+   5:     -	0030          	PORTA	equ	0x30
+   6:     -	0031          	PORTB	equ	0x31
+   7:     -	0032          	CMDA	equ	0x32
+   8:     -	0033          	CMDB	equ	0x33
+   9:				
+  10:     -	0008          	bs	equ	8
+  11:     -	000D          	cr	equ	13
+  12:     -	000A          	lf	equ	10
+  13:				
+  14:     -	0200          		org	0x0200
+  15:    0+4	0200  F3      	entry:	di
+  16:    4+10	0201  310002  		ld	sp, entry
+  17:   14+7	0204  3EFF    		ld	a, 0xFF
+  18:   21+11	0206  D35F    		out	(DISPLAY), a
+  19:   32+7	0208  3E80    		ld	a,0x80
+  20:   39+11	020A  D303    		out	(UBS),a		; Change upper bank to CRT Select (0x80 = D7 = 1 = CRT Select)
+  21:   50+11	020C  D34E    		out	(0x4e),a	; Start timing chain
+  22:   61+11	020E  D34A    		out	(0x4a),a	; VTAC reset
+  23:   72+11	0210  D34E    		out	(0x4e),a	; Start timing chain
+  24:   83+7	0212  3E63    		ld	a,0x63
+  25:   90+11	0214  D340    		out	(0x40),a	; Load horizontal line count (0x63)
+  26:  101+7	0216  3E26    		ld	a,0x26
+  27:  108+11	0218  D341    		out	(0x41),a	; Load sync width, delay, interface (0x26)
+  28:  119+7	021A  3E55    		ld	a,0x55
+  29:  126+11	021C  D342    		out	(0x42),a	; Load scans/data row, char/data row (0x55)
+  30:  137+7	021E  3ED7    		ld	a,0xd7
+  31:  144+11	0220  D343    		out	(0x43),a	; Load skew bits, data rows/frame (0xd7)
+  32:  155+7	0222  3E14    		ld	a,0x14
+  33:  162+11	0224  D344    		out	(0x44),a	; Load scan lines/fram (0x14)
+  34:  173+7	0226  3E1F    		ld	a,0x1f
+  35:  180+11	0228  D345    		out	(0x45),a	; Load vertical data start (0x1f)
+  36:  191+7	022A  3E17    		ld	a,0x17
+  37:  198+11	022C  D346    		out	(0x46),a
+  38:						
+  39:  209+4	022E  F3      	kbinit:	di
+  40:  213+8	022F  ED5E    		im2
+  41:  221+7	0231  3E07    		ld	a, 07h		; Disable interrupts
+  42:  228+11	0233  D332    		out	(cmda), a
+  43:  239+11	0235  D333    		out	(cmdb), a
+  44:					
+  45:  250+7	0237  3E00    		ld	a, low irqtab
+  46:  257+11	0239  D332    		out	(cmda), a
+  47:  268+11	023B  D333    		out	(cmdb), a
+  48:  279+7	023D  3E04    		ld	a, high irqtab
+  49:  286+9	023F  ED47    		ld	i, a
+  50:					
+  51:  295+7	0241  3E4F    		ld	a, 04Fh		; Set mode
+  52:  302+11	0243  D332    		out	(cmda), a
+  53:  313+7	0245  3E87    		ld	a, 087h		; Enable interrupts for PORTA
+  54:  320+11	0247  D332    		out	(cmda), a
+  55:					
+  56:  331+7	0249  3EFF    		ld	a, 0FFh
+  57:  338+11	024B  D333    		out	(cmdb), a
+  58:  349+7	024D  3EC1    		ld	a, 0C1h		; Input bits
+  59:  356+11	024F  D333    		out	(cmdb), a
+  60:					
+  61:  367+4	0251  AF      		xor	a, a
+  62:  371+11	0252  D331    		out	(portb), a
+  63:  382+13	0254  323103  		ld	(inptr), a
+  64:  395+13	0257  323203  		ld	(outptr), a
+  65:					
+  66:  408+11	025A  DB30    		in	a, (porta)
+  67:  419+11	025C  DB31    		in	a, (portb)
+  68:					
+  69:  430+4	025E  FB      		ei
+  70:					
+  71:  434+11	025F  DB31    		in	a, (PORTB)	; Keyboard strobe
+  72:  445+8	0261  CBCF    		set	1, a
+  73:  453+11	0263  D331    		out	(PORTB), a
+  74:  464+4	0265  AF      		xor	a, a
+  75:  468+4	0266  3D      	wait:	dec	a
+  76:  472+7+5	0267  20FD    		jrnz	wait
+  77:  479+8	0269  CB8F    		res	1, a
+  78:  487+11	026B  D331    		out	(PORTB), a
+  79:					
+  80:  498+13	026D  3A3203  	loop:	ld	a, (outptr)
+  81:  511+4	0270  5F      		ld	e, a
+  82:  515+7	0271  1600    		ld	d, 0
+  83:  522+13	0273  3A3103  		ld	a, (inptr)
+  84:  535+4	0276  BB      		cp	e
+  85:  539+7+5	0277  28F4    		jr	z, loop		; Wait for outptr and inptr to be different
+  86:					
+  87:  546+10	0279  213303  		ld	hl, buffer	; Get address of next character
+  88:  556+11	027C  19      		add	hl, de
+  89:					
+  90:  567+4	027D  7B      		ld	a, e		; Next address
+  91:  571+4	027E  3C      		inc	a
+  92:  575+7	027F  E61F    		and	a, 31		; Modulo 32
+  93:  582+13	0281  323203  		ld	(outptr), a
+  94:					
+  95:  595+7	0284  7E      		ld	a, (hl)		; Get data from buffer
+  96:  602+17	0285  CD9402  		call	phex		; Print it to screen as hex
+  97:				
+  98:  619+7	0288  0E20    		ld	c, ' '		; Two spaces to keep things neat
+  99:  626+17	028A  CDA602  		call	conout
+ 100:  643+7	028D  0E20    		ld	c, ' '
+ 101:  650+17	028F  CDA602  		call	conout
+ 102:				
+ 103:  667+12	0292  18D9    		jr	loop
+ 104:				
+ 105:				
+ 106:  679+11	0294  F5      	phex	push	af		; Will use A twice
+ 107:  690+4	0295  1F      		rar			; Shift upper to lower nibble
+ 108:  694+4	0296  1F      		rar
+ 109:  698+4	0297  1F      		rar
+ 110:  702+4	0298  1F      		rar
+ 111:  706+17	0299  CD9D02  		call	phex1		; Print it
+ 112:  723+10	029C  F1      		pop	af		; Restore original Acc
+ 113:  733+7	029D  E60F    	phex1	and	a, 0x0F		; Mask off high nibble
+ 114:  740+7	029F  C690    		add	a, 0x90		; Decimal adjust for ASCII
+ 115:  747+4	02A1  27      		daa
+ 116:  751+7	02A2  CE40    		adc	a, 0x40
+ 117:  758+4	02A4  27      		daa
+ 118:  762+4	02A5  4F      		ld	c, a		; Print it
+ 119:					;jp	conout
+ 120:					
+ 121:					; Console out
+ 122:  766+7	02A6  3E0D    	conout	mvi	a, cr
+ 123:  773+4	02A8  B9      		cmp	c
+ 124:  777+7+5	02A9  2831    		jrz	concr
+ 125:  784+7	02AB  3E0A    		mvi	a, lf
+ 126:  791+4	02AD  B9      		cmp	c
+ 127:  795+7+5	02AE  2838    		jrz	conlf
+ 128:  802+7	02B0  3E08    		mvi	a, bs
+ 129:  809+4	02B2  B9      		cmp	c
+ 130:  813+7+5	02B3  282C    		jrz	conbs
+ 131:  820+7	02B5  3E20    		mvi	a, ' '
+ 132:  827+4	02B7  B9      		cmp	c
+ 133:  831+7+5	02B8  2002    		jrnz	conout1
+ 134:  838+7	02BA  0E00    		mvi	c, 0		; Blank for space
+ 135:  845+11	02BC  D5      	conout1	push	d
+ 136:  856+16	02BD  2A2F03  		lhld	cursor
+ 137:  872+11	02C0  E5      		push	h
+ 138:  883+10	02C1  1100E0  		lxi	d, 0E000h	; CRT base address
+ 139:  893+11	02C4  19      		dad	d
+ 140:  904+7	02C5  71      		mov	m, c
+ 141:  911+10	02C6  E1      		pop	h
+ 142:  921+10	02C7  D1      		pop	d
+ 143:  931+6	02C8  23      		inx	h
+ 144:  937+16	02C9  222F03  		shld	cursor
+ 145:  953+7	02CC  3E50    		mvi	a, 80		; 80 columns
+ 146:  960+4	02CE  BD      		cmp	l
+ 147:  964+5+6	02CF  C0      		rnz
+ 148:  969+7	02D0  2E00    		mvi	l, 0		; Newline
+ 149:  976+4	02D2  24      		inr	h
+ 150:  980+16	02D3  222F03  		shld	cursor
+ 151:  996+10	02D6  213003  		lxi	h, cursor+1
+ 152: 1006+7	02D9  7E      		mov	a, m
+ 153: 1013+12	02DA  1811    		jr	scroll
+ 154:				
+ 155: 1025+4	02DC  AF      	concr:	xra	a		; Low byte is column
+ 156: 1029+13	02DD  322F03  		sta	cursor
+ 157: 1042+10	02E0  C9      		ret
+ 158:					
+ 159: 1052+10	02E1  212F03  	conbs:	lxi	h, cursor	; Point at cursor column
+ 160: 1062+11	02E4  35      		dcr	m		; Backspace it
+ 161: 1073+5+6	02E5  D0      		rnc			; Too far?
+ 162: 1078+11	02E6  34      		inr	m		; Undo
+ 163: 1089+10	02E7  C9      		ret
+ 164:					
+ 165: 1099+10	02E8  213003  	conlf:	lxi	h, cursor+1	; Newline and scroll
+ 166: 1109+11	02EB  34      		inr	m		; High byte is line
+ 167: 1120+7	02EC  7E      		mov	a, m
+ 168:				
+ 169: 1127+7	02ED  FE18    	scroll:	cmp	24
+ 170: 1134+5+6	02EF  D8      		rc
+ 171: 1139+11	02F0  35      		dcr	m
+ 172:				
+ 173: 1150+7	02F1  3EE0    		mvi	a, 0E0h
+ 174: 1157+11	02F3  F5      	scrll:	push	a
+ 175: 1168+4	02F4  57      		mov	d, a
+ 176: 1172+7	02F5  1E00    		mvi	e, 0
+ 177: 1179+4	02F7  3C      		inr	a
+ 178: 1183+4	02F8  67      		mov	h, a
+ 179: 1187+7	02F9  2E00    		mvi	l, 0
+ 180: 1194+10	02FB  015000  		lxi	b, 80
+ 181: 1204+16+5	02FE  EDB0    		ldir
+ 182: 1220+10	0300  F1      		pop	a
+ 183: 1230+4	0301  3C      		inr	a
+ 184: 1234+7	0302  FEF7    		cmp	0F7h
+ 185: 1241+7+5	0304  20ED    		jrnz	scrll
+ 186:					
+ 187: 1248+4	0306  AF      		xra	a		; Last line blanked
+ 188: 1252+10	0307  2100F7  		lxi	h, 0F700h
+ 189: 1262+7	030A  0650    		mvi	b, 80
+ 190: 1269+7	030C  77      	endlin:	mov	m, a
+ 191: 1276+6	030D  23      		inx	h
+ 192: 1282+8+5	030E  10FC    		djnz	endlin
+ 193: 1290+10	0310  C9      		ret
+ 194:					
+ 195: 1300+11	0311  F5      	kbd:	push	af
+ 196: 1311+11	0312  E5      		push	hl
+ 197: 1322+11	0313  D5      		push	de
+ 198:					
+ 199: 1333+13	0314  3A3103  		ld	a, (inptr)	; input offset to buffer
+ 200: 1346+4	0317  5F      		ld	e, a
+ 201: 1350+7	0318  1600    		ld	d, 0
+ 202: 1357+10	031A  213303  		ld	hl, buffer	; Buffer origin address
+ 203: 1367+11	031D  19      		add	hl, de		; Add the two
+ 204: 1378+4	031E  3C      		inc	a		; Next address
+ 205: 1382+7	031F  E61F    		and	a, 31		; Modulo 32
+ 206: 1389+13	0321  323103  		ld	(inptr), a
+ 207:					
+ 208: 1402+11	0324  DB30    		in	a, (PORTA)	; Get the data
+ 209: 1413+7	0326  77      		ld	(hl), a		; Store it
+ 210:					
+ 211: 1420+11	0327  D300    		out	(0), a 		; Click
+ 212:					
+ 213: 1431+10	0329  D1      		pop	de
+ 214: 1441+10	032A  E1      		pop	hl
+ 215: 1451+10	032B  F1      		pop	af
+ 216: 1461+4	032C  FB      		ei
+ 217: 1465+14	032D  ED4D    		reti
+ 218:				
+ 219:     -	032F  0000    	cursor:	dw	0		; Address of cursor
+ 220:     -	0331  00      	inptr:	db	0		; input pointer to buffer
+ 221:     -	0332  00      	outptr:	db	0		; output pointer to buffer
+ 222:     -	0333          	buffer:	ds	32
+ 223:				
+ 224:     -	0400          		org	0x400
+ 225:     -	0400  1103    	irqtab:	dw	kbd
+ 226:					
+ 227:					rept	(0x200 - $)
+ 230:					
+ 231:     -	0402          	cpm	equ	$
+ 232:				
+ 233:				
+
+
+
+Statistics:
+
+     4	passes
+     0	jr promotions
+    30	symbols
+   309	bytes
+
+     0	macro calls
+    13	macro bytes
+     0	invented symbols
+
+
+
+Symbol Table:
+
+CMDA           =32        50
+CMDB           =33        51
+DISPLAY        =5F        95
+PORTA          =30        48
+PORTB          =31        49
+UBS            =03        3
+bs             =08        8
+buffer           333      819
+conbs            2E1      737
+concr            2DC      732
+conlf            2E8      744
+conout           2A6      678
+conout1          2BC      700
+cpm            = 402      1026
+cr             =0D        13
+cursor           32F      815
+endlin           30C      780
+entry            200      512
+inptr            331      817
+irqtab           400      1024
+kbd              311      785
+kbinit           22E      558
+lf             =0A        10
+loop             26D      621
+outptr           332      818
+phex             294      660
+phex1            29D      669
+scrll            2F3      755
+scroll           2ED      749
+wait             266      614

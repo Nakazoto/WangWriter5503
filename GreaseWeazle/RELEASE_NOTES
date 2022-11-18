@@ -1,0 +1,342 @@
+************************************
+** Greaseweazle Tools Release Notes
+** Keir Fraser <keir.xen@gmail.com>
+************************************
+
+** v1.3 - 1 September 2022
+ - gw: New formats ibm.800 and ibm.2880
+ - gw: New image format *.MGT
+
+** v1.2 - 1 August 2022
+ - gw read, gw convert: Allow PLL parameters to be specified
+ - Try fallback conservative PLL on difficult tracks
+ - Kryoflux: Emit info block with Greaseweazle and frequency details
+
+** v1.1 - 18 July 2022
+ - New IMG formats: pc98.dd, pc98.hd
+ - IBM FM, MFM: Fix bugs in raw track decoder
+ - gw info: Report MCU information (type, speed, SRAM)
+
+** v1.0 - 18 June 2022
+ - New IMG formats:
+   - ibm.1680, ibm.dmf
+   - akai.800, akai.1600
+   - ensoniq.800, ensoniq.1600
+ - FM/MFM: Report unexpected sectors when reading
+   - Gives a hint that the format specifier is incorrect
+ - Minor bugfixes
+
+** v0.42 - 7 April 2022
+ - Mac/Linux: Further improve Python source installation 
+
+** v0.41 - 5 April 2022
+ - Mac/Linux: Fix build dependencies for Python source installation 
+
+** v0.40 - 3 April 2022
+ - gw update: Allow update from a specified GitHub release tag
+ - Python: Proper setuptools-based installation
+ - Various minor fixes
+
+** v0.39 - 27 February 2022
+ - Fix crashes in the USB.seek error path
+ - Support Atari 90kB format (atari.90)
+
+** v0.38 - 28 January 2022
+ - gw rpm: Print 3 decimal places, and print summary stats
+ - gw read,convert: Rename --rpm to --adjust-speed
+   - Accepts a SPEED value in units of rpm, ms, us, ns, or scp ticks
+ - gw read,write,erase: New option --fake-index
+   - Ignore real index pulses
+   - Generate fake index pulses at specified SPEED
+ - gw read,write,convert: Format decoders automatically adjust track speed
+   - Usually there is no need to specify --rpm (now --adjust-speed)
+ - gw read: Re-seek via cylinder 0 every N retries
+ - gw erase: New option --hfreq to write a high-frequency flux signal
+   - Usually reads back as a "No Flux Area"
+
+** v0.37 - 10 January 2022
+ - Require Python >= v3.7 (ignore this for Windows binary builds)
+ - Logging output to stderr is now buffered no more than per-line
+ - HFE: Auto-detect output bitrate if possible, else require on command line
+ - gw convert: Fix crash when printing summary information
+ - gw convert: Fix --tracks= handling to respect step= and hswap
+ - gw convert: New option --out-tracks to allow step= and hswap override
+ - D81 (commodore.1581): Fix sector header H field: should be swapped
+
+** v0.36 - 5 January 2022
+ - Tools now require firmware >= v0.31
+ - New commands: gw convert, gw rpm
+ - gw read, gw convert: New option --no-clobber prevents file overwrites
+ - gw read: Save partial output image file on ctrl-c
+ - gw read: Option --rate replaced by HFE sub-option 'bitrate'
+ - gw read: New option --raw forces raw flux output even if --format specified
+ - Recognise new third-party hardware: "Adafruit Floppy Generic"
+ - Sanity check TRK0 signal after every head seek
+ - Rename sega.sf7 format to sega.sf7000
+ - New --tracks sub-option hswap: Treat side 1 as side 0 and vice versa
+ - ibm mfm, fm: Fix parsing sectors that extend past end of dump
+ - All output is now to stderr (consistent, and unbuffered)
+
+** v0.35 - 30 December 2021
+ - Fix Windows distribution to include optimised data routines
+ - Support Sega SF-7000 disk format (sega.sf7) and .SF7 image suffix
+
+** v0.34 - 28 December 2021
+ - Firmware is now released separately from the host tools
+ - gw update: Automatically download the latest firmware from GitHub
+ - Fix read/write raw files (HFE, SCP, etc) when --format is specified
+ - Allow Acorn ADF images to be read and written using --format specifier
+ - Support SCP images containing Supercard Pro C64 dumps including halftracks
+
+-------------------------------------------------------------------------
+All versions below include firmware and host tools in a combined release.
+
+** v0.33 - 14 December 2021
+ - Support high-density Amiga images (1760kB ADF)
+ - IPF: Automatic write verification
+ - New format specifiers for Acorn DFS and ADFS
+ - New image handlers for Acorn: ADS, ADM, ADL, SSD, DSD
+
+** v0.32 - 14 December 2021
+ - New format specifiers for IBM, Atari ST and Commodore 1581
+ - New image handlers for *.ST and *.D81
+
+** v0.31 - 8 October 2021
+ - F1: Support Low-Density STM32F103C6 chips, 32k Flash, 10k SRAM
+ - V4: Increase USB buffer size from 16kB to 64kB
+
+** v0.30 - 12 August 2021
+ - New board type: V4 Slim (AT32F403 MCU, laptop drive interface)
+ - F7 Slim: Support Disk Change Detect (used by WinUAE floppy bridge)
+
+** v0.29 - 29 July 2021
+ - gw read/write: Fix memory leak, reducing memory usage by approx 10x
+ - gw bandwidth: Test USB connection integrity
+ - New board type: F1 Plus (Unbuffered)
+
+** v0.28 - 22 June 2021
+ - V4: Improve USB bandwidth and double MCU clock speed to 144MHz
+   - Fixes "gw bandwidth" warnings
+ - Firmware: New command CMD_NOCLICK_STEP.
+   - Used by Rob Smith's WinUAE bridge to implement noclick
+ - "gw pin": Split into "gw pin set" and "gw pin get"
+
+** v0.27 - 12 May 2021
+ - EDSK: Support writing KBI-19 protection tracks
+ - EDSK: Support next IDAM in preceding sector's GAP
+ - gw seek: New option --motor-on to enable drive motor while seeking
+ - New firmware command: CMD_GET_PIN to interrogate input floppy pins
+ - New board type: V4 (using AT32F4xx MCUs)
+ - New board type: F1 Plus (enhanced BP adapter board by Monideth Pen)
+
+** v0.26 - 26 March 2021
+ - Support new Greaseweazle model: F7 v3 "Thunderbolt"
+ - EDSK: Support for writing many protected EDSK files
+ - Windows 7: Disable jumperless firmware update as it hangs.
+ - Default head-step delay is doubled to 10ms.
+
+** v0.25 - 27 February 2021
+ - EDSK: Support for writing unprotected EDSK files
+ - SCP: Allow disktype header byte to be specified (eg "a.scp::disktype=amiga")
+ - SCP: Fix import of non-index-cued SCP imnage files
+ - AmigaDOS: Mark bad sectors with explicit pattern "-=[BAD SECTOR]=-"
+ - read/write: Add a --retries parameter used if analyse/verify stage fails
+ - clean: New command to clean a drive using a cleaning disk
+ - gw: New global option --time to print elapsed time taken by an operation
+ - gw: Improve reliability of USB connection reset when starting an operation
+ - flippy: Improve reliability for Panasonic modded drives (find true trk0)
+ - Linux/Mac: setup.sh better error reporting when run from wrong folder
+
+** v0.24 - 14 January 2021
+ - Index-cue generated Kryoflux and SCP image files
+   - Most external tools and emulators fail with non-cued streams
+ - gw write: New precomp command-line option (see the wiki)
+ - gw: Backward compatibility with older firmware (only back to v0.23)
+ - Safer bootloader update (CRC check before erasing existing bootloader)
+
+** v0.23 - 13 January 2021
+ - Support new Greaseweazle model: F7 Slim
+ - Read/write/verify 1.44M IMG image files
+ - Read/write Kryoflux stream files
+ - Optimisations:
+   - Rewrite read/verify conversion routines in C
+   - Fast Amiga track reads (now read an Amiga disk in approx 45 seconds)
+ - Shrink the Windows distribution zip file
+ - GW: New track-selection syntax ("--track="). See the wiki.
+
+** v0.22 - 27 November 2020
+ - Support read and write of Amiga ADF image files
+ - Increase /STEP pulse width to 15us (fix 5.25" drive seek for Arno Olaf)
+ - Flippy drives: support 'gw seek' down to track -8
+ - Revised USB protocol
+
+** v0.21 - 10 September 2020
+ - Support new Greaseweazle model: F7 Lightning Plus
+ - Fixes for older drives
+   - 50us index mask, avoid double triggering on the index signal
+   - Increase default head-step delay to 5ms
+ - Windows: Install the CAPS/SPS IPF library automatically
+ - New command 'gw seek' to seek to specified drive cylinder
+ - New syntax for specifying Greaseweazle device name on command line
+   - eg 'gw read --device COM3 a.scp'
+
+** v0.20 - 1 July 2020
+ - gw write: New options --erase-empty and --double-step
+ - gw update: Fix COM redetect on Windows running Bitdefender
+ - Support version 2 of Ant Goffart's F7 Plus
+ - SCP: support legacy single-sided SCP images
+   - Automatic import; Export via ::legacy_ss suffix
+     - eg. gw read --single-sided my.scp::legacy_ss
+ - SCP: support SCP image files generated by FluxEngine
+
+** v0.19 - 8 June 2020
+ - F7 v2: Support for the new board design
+ - gw update: Signature and CRC validation checks
+ - gw read: Fix end-track field in single-sided SCP images
+
+** v0.18 - 28 May 2020
+ - gw read: New parameters --rate and --rpm
+   - rate: Bitcell data rate in kbit/s (eg 250=DD 500=HD)
+     - Used only for HFE images right now, where default is DD (250)
+   - rpm: Normalise track timings to the given RPM value
+     - This occurs before any other conversion or analysis
+ - gw info: New command to display information about the Greaseweazle setup
+ - gw bandwidth: Improved stats output
+ - SCP: Fix single-sided image handling according to latest SCP spec.
+   - Operates correctly with latest beta version of HxC software
+ - F7: Support new board designs
+   - AmberTronic F7 Plus: Kryoflux form factor, output buffers, 12v supply
+   - F7 Lightning: High Speed USB, output buffers
+
+** v0.17 - 19 May 2020
+ - Windows: New self-contained executable distribution
+   - No need to install Python, or module dependencies
+ - Mac, Linux: Main script is directly executable
+   - No need to manually invoke the Python interpreter
+ - GW host tool: Help-text description for each available action
+
+** v0.16 - 15 May 2020
+ - F7 Firmware: Enable over-drive voltage mode
+   - Required for reliable 216MHz operation (see datasheet)
+ - Bootloader update:
+   - 'gw.py update --bootloader' updates the bootloader
+   - Not normally required
+   - Failure may brick the Weazle and require full reflash: Take care!
+ - Update build system to work with Windows MinGW environment
+
+** v0.15 - 5 May 2020
+ - Host tool improvements:
+   - IPF: More robust conversion to raw flux for writeout
+   - HFE: Fix crash when writing out HFE from third party tools
+   - F7 Firmware improvements:
+     - Preparation for High Speed USB (future board using 730Z8 MCU)
+     - Enable Instruction and Data caches (10x execution speedup)
+     - Various improvements to bandwidth as reported by 'gw.py bandwidth'
+     
+** v0.14 - 29 April 2020
+ - IPF: Full write support (weak data, index misalignment)
+ - New GW commands: bandwidth, erase
+   - bandwidth: Measure USB read/write bandwidth
+   - erase: Erase a disk
+ - F7 USB: Improved bandwidth when writing to disk
+   - Much less likely to see FluxUnderflow failures
+ - update: Fix a bug which could fail to reopen the GW device for update
+ - update: Automatically find the update file if filename not specified
+ - Control script: Tidier notification of errors (no scary backtrace)
+
+** v0.13 - 25 April 2020
+ - HFE: Read & write support
+ - IPF: Preliminary write support
+   - Requires SPS/CAPS support library. See the wiki.
+   - Weak data not yet supported (RNC "Protect Process" protection, & others)
+   - Write splice is always rotated to the index (affects Speedlock & others)
+   - Also TODO: Verified writes
+ - USB: Use the VID:PID pair assigned to Greaseweazle (1209:4d69)
+ - New prerequisite: 'bitarray' module. See the wiki.
+
+** v0.12 - 10 March 2020
+ - GW Autodetect: General improvements, and now works on Windows 7
+ - New read parameter --double-step to double-step drive heads
+   - Useful for reading a 40-cylinder disk in an 80-cylinder drive
+ - New 'pin' command allows a floppy pin to be set to specified level
+   - Currently supported only for pin 2 (DENSEL)
+ - New 'reset' command resets the Greaseweazle to power-on settings
+   - Motors off, drives deselected, power-on pin levels and delay values
+
+** v0.11 - 21 January 2020
+ - GW.py: Auto-detect the COM/serial port device name
+   - The device argument is now optional!
+ - USB: Provide a serial-id string to the host
+   - Identifier is unique to each Greaseweazle device
+   - Allows disambiguation between multiple Greaseweazle devices
+   - Recommended: Full flash from HEX file (embeds serial in bootloader)
+ - Ubuntu: Udev script now creates a /dev/greaseweazle symlink
+
+** v0.10 - 17 January 2020
+ - STM32F7xx: Multi-drive support via drive-select config option
+   - Up to three Shugart drives or two IBM/PC drives
+   - gw.py read|write --drive {a,b,0,1,2}
+   - See the "Drive Select" wiki page
+
+** v0.9 - 7 January 2020
+ - Activity LED
+   - Lights while a USB-issued command is in progress
+   - Flashes when enumerated but idle in the firmware-update bootloader
+
+** v0.8 - 6 January 2020
+ - STM32F73xx: Various Fixes and Improvements
+   - Allow Firmware Update mode to be forced via strapping Serial RX/TX
+   - Fix bogus sample values at start of read flux values
+   - Fix some time constants to be in units of the sample clock
+ - USB: Advertise USB 2.0 device descriptor
+
+** v0.7 - 6 December 2019
+ - USB: Fix end-of-stream detection on track writes
+   - Writes of empty/unformatted tracks sometimes hung forever
+ - No Flux Area: Firmware automatically masters long NFAs during track writes
+   - Generating no flux transitions does not read back as a NFA
+ - STM32F73xx: Initial support for new STM32 MCU
+   - Two HEX files are included: Use Greaseweazle-F1-* for existing boards!
+   - Single unified UPD file containing both firmware images
+
+** v0.6 - 15 November 2019
+ - gw.py: Big overhaul of underlying Python package
+   - Action (read, write, update) must come first on the command line
+   - eg. "python3 gw.py read --ecyl=39 foo.scp COM3"
+ - gw.py: New action "delays" to print/set delay parameters
+   - eg. "python3 gw.py delays --step=10000" to increase step time to 10ms
+
+** v0.5 - 11 November 2019
+ - USB: Overhaul the protocol and allow writes to be terminated at index
+   - Terminate-at-index is always used by current Python control script
+   - Terminate-at-index prevents an over-long write from overwriting itself
+   - Fix interruption of track writes (eg. KeyboardInterrupt)
+ - gw.py: New option --adjust-speed to normalise flux times for target drive
+   - Measures RPM of the target drive and calculates an adjustment factor
+
+** v0.4 - 5 November 2019
+ - Blinky: Diagnostic test firmware to detect fake STM32 chips
+   - https://github.com/keirf/greaseweazle/wiki/STM32-Fakes
+ - Floppy Write: Fix for very short flux timings
+ - Floppy Read: Fix for very long flux timings
+ - USB: Small improvement to double-buffer logic
+
+** v0.3 - 30 October 2019
+ - Bootloader: Fix Programming-Jumper detection
+ - Read Track: Various minor fixes
+ - SCP: Fix the SCP file headers generated by "gw.py read"
+ ** IMPORTANT USER INSTRUCTIONS **:
+ - Users must serial-update using the v0.3 HEX file
+   - DO NOT update from v0.2 using the UPD file
+ - May need to install the crcmod package: eg "pip3 install crcmod"
+
+** v0.2 - 29 October 2019
+ - USB: Fix hangs during "gw.py read"
+   - Thanks to Charlie Smurthwaite for telling me how to fix this!
+ - USB: Improved bandwidth (double-buffered IN/OUT endpoints)
+   - Reduces risk of buffer underflow/overflow during disk operations
+ - Firmware Update: Requires a jumper across A14 (aka DCL) and GND
+   - eg. "python gw.py update Greaseweazle-v0.2.upd COM3"
+
+** v0.1 - 17 October 2019
+ - First release
